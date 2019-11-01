@@ -1,4 +1,8 @@
 <?php
+
+use common\behavior\ResBeforeSendBehavior;
+use yii\i18n\PhpMessageSource;
+
 $params = array_merge(
     require __DIR__ . '/../../common/config/params.php',
     require __DIR__ . '/../../common/config/params-local.php',
@@ -15,6 +19,27 @@ return [
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-api',
+        ],
+        'response' => [
+            'class' => 'yii\web\Response',
+            'as resBeforeSend' => [
+                'class' => ResBeforeSendBehavior::className(),
+                'defaultCode' => 500,
+                'defaultMsg' => 'services error'
+            ]
+        ],
+        'i18n' => [
+            'translations' => [
+                'app*' => [
+                    'class' => PhpMessageSource::className(),
+                    'basePath' => '@common/messages',
+                    'sourceLanguage' => 'zh',
+                    'fileMap' => [
+                        'app' => 'app.php',
+                        'app/error' => 'error.php',
+                    ],
+                ]
+            ],
         ],
         'user' => [
             'identityClass' => 'common\models\User',
