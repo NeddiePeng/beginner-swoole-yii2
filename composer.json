@@ -13,8 +13,22 @@
         "source": "https://github.com/yiisoft/yii2"
     },
     "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "Swoole\\" : "Swoole/",
+            "Swoole\\Http\\" : "Swoole/Http",
+            "Swoole\\WebSocket\\" : "Swoole/WebSocket",
+            "Swoole\\Coroutine\\" : "Swoole/Coroutine",
+            "Swoole\\Process\\" : "Swoole/Process",
+            "amw\\" : "amw/yii2-swoole/src",
+            "amw\\web\\" : "amw/yii2-swoole/src/web",
+            "amw\\swoole\\" : "amw/yii2-swoole/src/swoole",
+            "amw\\controllers\\" : "amw/yii2-swoole/src/console"
+        },
+        "files" : ["Swoole/constants.php", "Swoole/Functions.php"]
+    },
     "require": {
-        "php": ">=5.6.0",
+        "php": ">=7.1.0",
         "yiisoft/yii2": "~2.0.14",
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0"
